@@ -1,1 +1,5 @@
-var dashboard = require("./dashboard");
+classes = {
+  dashboard : require("./dashboard")
+}
+
+module.exports = classes

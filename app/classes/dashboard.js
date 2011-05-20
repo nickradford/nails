@@ -1,8 +1,21 @@
+dashboard = {
+  index : index,
+  goodbye : goodbye
+}
+
 function index() {
     return {
         str:"Hello",
-        name:"Nick Radford"
+        name:"Nick Radford",
+        path: "dashboard/index"
     }
 }
+function goodbye() {
+  return {
+      str:"Goodbye",
+      name:"Mr. Radford"
+  }
+}
 
-exports.index = index;
+
+module.exports = dashboard
