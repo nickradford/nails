@@ -5,7 +5,8 @@ nails = require('../../nails/nails')
 }
 */
 routes = {
-  "dashboard" : dashboard.index
+  "dashboard" : dashboard.index,
+  "goodbye"   : dashboard.goodbye
 }
 
 

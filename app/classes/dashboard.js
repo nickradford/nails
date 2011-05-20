@@ -1,4 +1,5 @@
 dashboard = {
+  template: "master",
   index : index,
   goodbye : goodbye
 }
@@ -13,7 +14,8 @@ function index() {
 function goodbye() {
   return {
       str:"Goodbye",
-      name:"Mr. Radford"
+      name:"Mr. Radford",
+      path: "dashboard/goodbye"
   }
 }
 

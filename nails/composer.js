@@ -7,8 +7,10 @@ function compose(req) {
     console.log(__dirname);
   
     try {
+      template = fs.readFileSync("./app/views/templates/master.html.js");
       var f = fs.readFileSync("./app/views/" + req.path + ".html.js");
-      return f;
+      template = template.toString().replace("<% yield %>", f);
+      return template;
     }
     catch (err)
     {
