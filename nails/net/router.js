@@ -13,14 +13,14 @@ function route(u) {
                                              //  the request.
     if (obj[obj.length - 1] == "")
       obj.pop();
-    console.log("Controller is: " + obj[0]);
+    //console.log("Controller is: " + obj[0]);
     var ret = {controller: obj[0], path: obj};
     if (obj.length == 1) {
-      console.log("Action is: index");
+      //console.log("Action is: index");
       ret.action = "index";
     }
     else {
-      console.log("Action is: " + obj[1]);
+      //console.log("Action is: " + obj[1]);
       ret.action = obj[1];
     }
     if(func = nails.net.router.check_route(ret))
