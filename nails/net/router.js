@@ -23,7 +23,7 @@ function route(u) {
       console.log("Action is: " + obj[1]);
       ret.action = obj[1];
     }
-    if(func = nails.router.check_route(ret))
+    if(func = nails.net.router.check_route(ret))
     {
       return func();
     }
