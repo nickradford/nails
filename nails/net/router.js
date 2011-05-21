@@ -39,13 +39,13 @@ function route(u) {
 
 function check_route(rto) {
   // Check for named route, then controller.
-  console.log("Check Route: " + nails.util.inspect(rto));
+  //console.log("Check Route: " + nails.util.inspect(rto));
   namedrt = rto.path[0];
-  console.log("Possible named route: " + namedrt);
-  console.log("All named routes: " + nails.util.inspect(nails.routes));
+  //console.log("Possible named route: " + namedrt);
+  //console.log("All named routes: " + nails.util.inspect(nails.routes));
   if (rto.path.length == 1) {
     if (nails.routes[namedrt]){
-      console.log("found named route");
+      //console.log("found named route");
       return nails.routes[namedrt];
       
     }

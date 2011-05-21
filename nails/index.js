@@ -1,6 +1,6 @@
 nails = require("./nails");
 
-console.log(process.argv);
+//console.log(process.argv);
 if (process.argv.length == 2)
 	port = 9001;
 else

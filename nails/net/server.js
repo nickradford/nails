@@ -20,7 +20,7 @@ function start(port) {
 	p = parseInt(port);
   nails.net.server.http.createServer(onRequest).listen(p);
   console.log("Server has started on port " + p);
-  console.log(nails.net.server.util.inspect(nails));
+  //console.log(nails.net.server.util.inspect(nails));
 }
 
 module.exports = server;

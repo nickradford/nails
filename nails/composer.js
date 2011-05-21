@@ -4,12 +4,13 @@ var fs = require("fs");
 function compose(req) {
     var er = false;
     var obj = {};
-    console.log(__dirname);
+    //console.log(__dirname);
   
     try {
       template = fs.readFileSync("./app/views/templates/master.html.js");
       var f = fs.readFileSync("./app/views/" + req.path + ".html.js");
       template = template.toString().replace("<% yield %>", f);
+			console.log("Returning html for " + req.path)
       return template;
     }
     catch (err)
