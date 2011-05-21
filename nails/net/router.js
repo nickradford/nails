@@ -6,7 +6,7 @@ router = {
 
 function route(u) {
   //console.log("Trying to route a request for " + u.pathname);
-  var pathname = u.pathname;
+  var pathname = u.url.pathname;
   if(pathname.indexOf(".ico") == -1)
   {
     var obj = pathname.substr(1).split("/"); // get rid of leading / and split the rest of
@@ -15,6 +15,7 @@ function route(u) {
       obj.pop();
     //console.log("Controller is: " + obj[0]);
     var ret = {controller: obj[0], path: obj};
+		u.return_obj = ret;
     if (obj.length == 1) {
       //console.log("Action is: index");
       ret.action = "index";
@@ -28,7 +29,7 @@ function route(u) {
       return func();
     }
     else
-    return nails.error.FileNotFound(ret);
+    	return nails.error.FileNotFound(u);
 
 
 

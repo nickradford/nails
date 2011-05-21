@@ -7,16 +7,23 @@ server = {
 
 function start(port) {
   function onRequest(request, response) {
-		if (nails.debugging)
-			debugger;
-    console.log("[" + request.remoteAddress + "] requesting -> " + request.headers + );
-    //console.log("Request for " + pathname + " received.");
-    var u = nails.net.scanner.scan(request);
-    var r = nails.net.router.route(u);
-    var c = nails.composer.compose(r);
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.write(c);
-    response.end();
+		try {
+			exports.request = request;
+    	console.log("[" + request.connection.remoteAddress + "] "+ request.method + " -> " + request.headers.host + request.url );
+    	//console.log("Request for " + pathname + " received.");
+    	var u = nails.net.scanner.scan(request);
+			console.log(u);
+    	var r = nails.net.router.route(u);
+			console.log(r);
+    	var c = nails.composer.compose(r);
+    	response.writeHead(200, {"Content-Type": "text/html"});
+    	response.write(c);
+    	response.end();
+		}
+		catch (err)
+		{
+		  nails.error.ServerError("Server error: " + err);
+		}
     //console.log(module);
   }
 	p = parseInt(port);

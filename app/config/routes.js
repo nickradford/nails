@@ -6,8 +6,9 @@ nails = require('../../nails/nails')
 */
 routes = {
   "dashboard" : dashboard.index,
-  "goodbye"   : dashboard.goodbye
-}
+  "goodbye"   : dashboard.goodbye,
+	"default"	  : dashboard.index 
+	}
 
 
 module.exports = routes

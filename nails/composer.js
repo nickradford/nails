@@ -1,3 +1,9 @@
+composer = {
+	compose: compose,
+	composePublic: composePublic,
+	composeDefault: composeDefault
+}
+
 var fs = require("fs");
 
 // function called to render the view
@@ -8,14 +14,18 @@ function compose(req) {
   
     try {
       template = fs.readFileSync("./app/views/templates/master.html.js");
+			console.log(req);
       var f = fs.readFileSync("./app/views/" + req.path + ".html.js");
       template = template.toString().replace("<% yield %>", f);
-			console.log("Returning html for " + req.path)
+			console.log("Render -> " + req.path)
       return template;
     }
     catch (err)
     {
-      return composePublic("404");
+			//if (nails.debugging)
+      	return composePublic("404");
+			//else
+				//return composeDefault(nails.routes.default);
     }
 }
 
@@ -27,5 +37,13 @@ function composePublic(filename){
   return fs.readFileSync("./public/" + filename);
 }
 
-exports.compose = compose;
-exports.composePublic = composePublic;
+function composeDefault(func) {
+	p = func().path;
+	filled = fs.readFile("./app/views/templates/master.html.js", function(t) {
+		fs.readFile(p, function(y) {
+			return t.toString().replace("<% yield %>", y)
+		});
+	});
+}
+
+module.exports = composer
