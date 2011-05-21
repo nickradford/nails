@@ -1,2 +1,0 @@
-var nails = require("./nails");
-
